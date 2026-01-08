@@ -1,3 +1,3 @@
 # Pre-commit Configs
 
-This repository stores [pre-commit](https://pre-commit.com/index.html) config files.
+This repository contains [pre-commit](https://pre-commit.com/index.html) config file along with necessary config files for certain hooks.

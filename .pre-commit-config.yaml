@@ -1,0 +1,99 @@
+repos:
+# -------------- BASE --------------
+  ## This is to show how to create a local pre-commit hooks
+  # - repo: local
+  #   hooks:
+  #     - id: python-utf8
+  #       name: python-utf8
+  #       entry: bash -c "export PYTHONUTF8=1"
+  #       language: system
+  #       pass_filenames: false
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      # Prevent giant files from being committed. default=500kB
+    - id: check-added-large-files
+      # args: ['--maxkb=123']
+
+    # Check for files that contain merge conflict strings.
+    - id: check-merge-conflict
+
+  #   - id: pretty-format-json
+  #     args: [--no-sort-keys, --autofix, --no-ensure-ascii]
+
+  #   - id: check-json
+
+    # Attempts to load all TOML files to verify syntax.
+    - id: check-toml
+
+    # Attempts to load all yaml files to verify syntax.
+    - id: check-yaml
+      types: [yaml]
+
+    # Checks for the existence of private keys.
+    - id: detect-private-key
+
+    - id: detect-aws-credentials
+      args: [--allow-missing-credentials]
+
+    - id: trailing-whitespace
+      args: [--markdown-linebreak-ext=md]
+
+    - id: end-of-file-fixer
+
+  # - repo: https://github.com/rhysd/actionlint
+  #   rev: v1.7.9
+  #   hooks:
+  #   - id: actionlint
+
+  # - repo: https://github.com/codespell-project/codespell
+  #   rev: v2.4.1
+  #   hooks:
+  #   - id: codespell
+  #     # Codespell can be configured using pyproject.toml file
+  #     # For versions of Python prior to 3.11, this requires the tomli package.
+  #     # additional_dependencies:
+  #     #   - tomli
+
+  # ## last release was on March 2023. Consider removing it.
+  - repo: https://github.com/jorisroovers/gitlint
+    rev: v0.19.1
+    hooks:
+    - id: gitlint
+       # ignore "Body message must be specified." rule
+      args: [--ignore, "B6", --msg-filename]
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.0
+    hooks:
+    - id: gitleaks
+
+## -------------- Python  --------------
+#   - repo: https://github.com/pre-commit/pygrep-hooks
+#     rev: v1.10.0
+#     hooks:
+#       # Checks whether modules use deprecated logger.warn() method.
+#       # logger.warning should be used instead
+#      - id: python-no-log-warn
+#   - repo: https://github.com/pre-commit/pre-commit-hooks
+#     rev: v6.0.0
+#     hooks:
+#     # verifies that test files are named correctly.
+#     - id: name-tests-test
+#       # ensure tests match test_.*\.py pattern
+#       args: [--pytest-test-first]
+
+#   - repo: https://github.com/astral-sh/ruff-pre-commit
+#     rev: v0.14.9
+#     hooks:
+#      - id: ruff-format
+#      - id: ruff-check
+
+# ## -------------- SQL --------------
+
+#   - repo: https://github.com/sqlfluff/sqlfluff
+#     rev: 3.5.0
+#     hooks:
+#     - id: sqlfluff-fix
+#       args: ["--dialect", "snowflake", "--rules", "AL01,AL05,AM08,CP01,CP02,CP03,CP04,CP05,CV01,CV03,CV05,JJ01,LT01,LT02,LT04,LT06,LT07,LT08,LT09,LT10,LT11,LT12,LT13,LT14,LT15,RF03,ST01,ST08"]

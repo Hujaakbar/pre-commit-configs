@@ -1,0 +1,36 @@
+[tool.codespell]
+ignore-words-list = "codespell,gitlint,icecream,sqlfluff,cls"
+
+[tool.sqlfluff]
+dialect = "snowflake"
+# exclude_rules = ST06
+
+[tool.sqlfluff.layout.type.comma]
+line_position = "leading"
+
+[tool.sqlfluff.rules.capitalisation.keywords]
+capitalisation_policy = "lower"
+
+[tool.sqlfluff.rules.capitalisation.identifiers]
+extended_capitalisation_policy = "lower"
+
+[tool.sqlfluff.rules.capitalisation.functions]
+extended_capitalisation_policy = "lower"
+
+[tool.sqlfluff.rules.aliasing.table]
+aliasing = "explicit"
+
+[tool.sqlfluff.rules.aliasing.column]
+aliasing = "explicit"
+
+[tool.sqlfluff.rules.ambiguous.column_references]
+# in group by/order by
+group_by_and_order_by_style = "explicit"
+
+[tool.sqlfluff.rules.references.keywords]
+prefer_union_all = true
+
+[tool.sqlfluff.rules.convention.count_rows]
+# count(*) is recommended
+prefer_count_0 = false
+prefer_count_1 = false
